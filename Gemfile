@@ -60,3 +60,6 @@ group :test do
 end
 
 gem "tailwindcss-rails"
+
+# usecaseを実装するための軽量なgem
+gem "u-case", "~> 4.5.1"
