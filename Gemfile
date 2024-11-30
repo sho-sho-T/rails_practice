@@ -65,3 +65,5 @@ gem "tailwindcss-rails"
 gem "u-case", "~> 4.5.1"
 
 gem "dotenv-rails"
+
+gem "seed-fu"
