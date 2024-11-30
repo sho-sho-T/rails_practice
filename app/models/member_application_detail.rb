@@ -1,2 +1,0 @@
-class MemberApplicationDetail < ApplicationRecord
-end
