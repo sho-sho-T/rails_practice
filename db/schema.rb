@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_30_122458) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_01_062354) do
   create_table "affiliations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "member_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_122458) do
     t.bigint "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "division", null: false
     t.index ["group_id"], name: "index_member_application_details_on_group_id"
     t.index ["member_id"], name: "index_member_application_details_on_member_id"
   end
@@ -55,5 +56,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_122458) do
     t.string "last_name_kana", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "division", null: false
   end
 end
