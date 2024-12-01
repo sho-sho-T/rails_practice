@@ -34,14 +34,14 @@ class GetAllMembersUsecase
   def build_member_query
     query = @member_table.project(
       # 会員情報のカラム
-      @members_table[:id].as("member_id"),
+      @member_table[:id].as("member_id"),
       Arel.sql("NULL").as("member_application_detail_id"),
-      @members_table[:first_name],
-      @members_table[:last_name],
-      @members_table[:first_name_kana],
-      @members_table[:last_name_kana],
-      @members_table[:division],
-      @groups_table[:id].as("group_id"),
+      @member_table[:first_name],
+      @member_table[:last_name],
+      @member_table[:first_name_kana],
+      @member_table[:last_name_kana],
+      @member_table[:division],
+      @group_table[:id].as("group_id"),
       @group_table[:name].as("group_name"),
       # ライセンス情報は後でJOINする際に使用
       @member_license_table[:license_name],
