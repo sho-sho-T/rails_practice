@@ -19,7 +19,7 @@ module Api
         }
 
         if include_unregistered?
-          result = GetAllMembersUsecase.new(params).call
+          @all_members = GetAllMembersUsecase.new(params).call
         else
 
         end
