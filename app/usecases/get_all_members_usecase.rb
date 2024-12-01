@@ -97,10 +97,13 @@ class GetAllMembersUsecase
     member_application_detail_query = build_member_application_detail_query
     union_query = member_query.union(member_application_detail_query)
 
+    # 新しいテーブルを作成　
     @union_table = Arel::Table.new(:union_table)
+
+    # SELECT文を構築し、UNIONされたクエリを元にあた新しいテーブルを作成
     Arel::SelectManager.new(@union_table)
-      .project(Arel.star)
-      .from(Arel.sql("(#{union_query.to_sql}) AS union_table"))
+      .project(Arel.star) # 全てのカラムを取得
+      .from(Arel.sql("(#{union_query.to_sql}) AS union_table")) # UNIONされたクエリをサブクエリとして指定
   end
 
    # 共通フィルターとライセンスフィルターを手を適用
@@ -165,12 +168,12 @@ class GetAllMembersUsecase
    def apply_sorting(query)
      case @sort_by
      when "name"
-        query.order(@union_table[:last_name].send(@sort_order))
-             .order(@union_table[:first_name].send(@sort_order))
+        query.order(@union_table[:last_name_kana].send(@sort_order))
+             .order(@union_table[:first_name_kana].send(@sort_order))
      when "division"
         query.order(@union_table[:division].send(@sort_order))
      else
-        query.order(@union_table[:last_name].asc)
+        query.order(@union_table[:last_name_kana].asc)
      end
    end
 end
